@@ -1,0 +1,83 @@
+set nu "line number
+set shortmess=atI " 
+
+"colors
+set t_co=256
+syntax on
+
+"Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+
+"following vundle setting
+set nocompatible
+filetype off
+
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.Vim'
+Plugin 'bling/vim-airline'
+Plugin 'sickill/vim-monokai'
+Plugin 'scrooloose/nerdtree'
+Plugin 'valloric/youcompleteme'
+Plugin 'Yggdroot/indentLine'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+
+call vundle#end()
+
+filetype plugin indent on
+
+colorscheme monokai
+
+"youcompleteme setting
+let g:ycm_global_ycm_extra_conf ='~/.vim/bundle/youcompleteme/cpp/ycm/.ycm_extra_conf.py'
+
+" airline setting
+set laststatus=2
+let g:airline_powerline_fonts=1
+
+"NERDtree setting
+map <f8> :NERDTreeFind<CR>
+
+"syntastic setting
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslingFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+"indentLine
+let g:indentLine_setColors=0
+let g:indentLine_char='|'
+let g:indentLine_enabled=1
+
+
+"apply *.py into PEP8
+au BufNewFile,BufRead *.py
+   \ set tabstop=4 |
+   \ set softtabstop=4 |
+   \ set shiftwidth=4 |
+   \ set textwidth=79 |
+   \ set expandtab |
+   \ set autoindent |
+   \ set fileformat=unix |
+
+
+"solve problem that indentline not working
+set conceallevel=1
+let g:indentLine_conseallevel=1
+
+
+
+
