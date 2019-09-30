@@ -1,31 +1,26 @@
 set nu
-set tabstop=4
+set tabstop=2
 set expandtab
-set autoindent
-set copyindent
 set t_Co=256
 set encoding=utf-8
 set laststatus=2
 set noshowmode
-set list lcs=tab:\|\  
-syntax on
+syntax enable
 colorscheme monokai
-
-
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'Yggdroot/indentLine'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'itchyny/vim-gitbranch'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
-nnoremap <silent> <F2> :NERDTreeToggle<CR>
-
+let g:indentLine_char='|'
+let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_faster=1
 
 let g:lightline = { 
     \ 'colorscheme': 'seoul256',
@@ -37,4 +32,3 @@ let g:lightline = {
     \    'gitbranch': 'gitbranch#name'
     \  }, 
     \  }
-
